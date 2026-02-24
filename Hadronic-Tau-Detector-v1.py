@@ -3,7 +3,7 @@ import numpy as np
 import awkward as ak
 
 #Loading the root file
-filepath = '/home/midway/CERN Open Data/1lep1tau/MC/mc_341123.ggH125_tautaulh.1lep1tau.root'
+filepath = 'filepath'
 file = uproot.open(filepath)
 
 print(file.keys())
