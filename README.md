@@ -1,19 +1,31 @@
 # Hadronic-Tau-Detector-ML
-A Neural Network trained on MC truth labels. Predicts whether hadronic tau candidates are real or just QCD jets.
+A supervised learning model to distinguish hadronic tau decays from QCD jets using high-energy physics event data using the Tensorflow framework.
 
-      This is currently a work in progress:                                                                  
-      |
-      |_ Version 1 - Contains just the training of the neural network:
-      |      |                                                                                                                                                                                                
-      |      |_ ~98.8% accurate with classifying taus and non-taus                                                
-      |      |  
-      |      |_ The loss is high, feature normalisation needed
-      |
-      |_ Version 2 - Contains the training of the model and works on detector data:
-             |
-             |_ Fix adds ROC curve, removes tau_BDTid, adds detector data functionality, smaller loss
-             |
-             |_ ROC = 0.710 
+Hadronic tau decays produce narrow, low-multiplicity jets that can be easily confused with QCD background jets. Efficient tau identification is essential in many LHC analyses, including Higgs boson decay channels.
 
-Also, please note you require the https://opendata.cern.ch/record/15002 from CERN open data, please make sure the filepaths line up.
+# How the Model Works
+The model works by reading the root file of the CERN Monte Carlo simulation data
 
+The model takes a few key variables:
+
+     - tau_pt = transverse momentum of the tau
+     
+     - tau_eta = pseudorapidity (detector location in comparison)
+     
+     - tau_nTracks = number of tracks associated with the tau
+     
+     - tau_phi = azimuthal angle
+     
+     - tau_charge = charge of the tau
+     
+     - tau_E = energy of the tau
+
+We use these variables to train the model to make a prediction against the MC_truth_label (this is the true identity of the tau candidate)
+
+The model generates an ROC curve, plotting the True positive rate against the False positive rate and generating an AUC score to give us an idea to its accuracy on raw detector data. It currently sits at a 0.710
+
+
+# Extra Information
+Please note you require the https://opendata.cern.ch/record/15002 from CERN open data
+
+Make sure you change the placeholder 'filepath' to the filepaths of your root files
