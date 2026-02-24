@@ -7,7 +7,7 @@ import awkward as ak
 ##################################################### 
 
 #Loading the root file
-filepath = '/home/midway/CERN Open Data/1lep1tau/MC/mc_341123.ggH125_tautaulh.1lep1tau.root'
+filepath = 'filepath'
 file = uproot.open(filepath)
 
 print(file.keys())
@@ -160,7 +160,7 @@ plt.show()
 
 
 #load detector data
-data_filepath = '/home/midway/CERN Open Data/1lep1tau/Data/data_A.1lep1tau.root'
+data_filepath = 'filepath'
 data_file = uproot.open(data_filepath)
 data_tree = data_file['mini']
 
